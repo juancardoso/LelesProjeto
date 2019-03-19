@@ -12,17 +12,14 @@ import leles_entrega_2.Filho;
 import leles_entrega_2.Responsavel;
 import org.junit.Assert;
 import org.junit.Test;
-//  String nomeLugar;
-//    String rua;
-//    String bairro;
-//    String numero;
-//    String cidade;
-//    String estado;
+
 /**
  *
  * @author Juan
  */
 public class ClasseTeste {
+    
+    
     @Test
     public void registroInteresseCarona(){
         Responsavel mae = new Responsavel("Janaina");
@@ -36,5 +33,24 @@ public class ClasseTeste {
         ControleCaronas.registrarInteresseCarona(destino,mae.getFilhos());
         
         Assert.assertTrue(1 == ControleCaronas.getInteresses().size());
+    }
+    
+    @Test
+    public void avaliandoCarona(){
+        Responsavel mae = new Responsavel("Janaina");
+        Filho filhoDaMae = new Filho("Joaquim");
+        Destino destino = new Destino("Facens","Castelinho","Jardim Simus","123","Sorocaba","SP");
+        
+        mae.addFilho(filhoDaMae);
+        ControleCaronas.registrarInteresseCarona(destino,mae.getFilhos());
+        
+        Responsavel maeCarona = new Responsavel("Amelia");
+                
+        ControleCaronas.aceitarDarCarona(ControleCaronas.getInteresses().get(0), maeCarona);
+        ControleCaronas.finalizarCarona(ControleCaronas.getCaronas().get(0));
+        Carona carona = ControleCaronas.getCaronasFinalizadas().get(0);
+        ControleCaronas.avaliarCarona(carona, (float) 10.0);
+        
+        Assert.assertEquals(carona.getAvaliacao(), (float)10.0);
     }
 }

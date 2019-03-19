@@ -16,11 +16,20 @@ public class Carona {
     Responsavel daCarona;
     ArrayList<Filho> recebeCarona = new ArrayList<Filho>();
     Destino destino;
-
+    float avaliacao;
+    
     public Carona(Responsavel daCarona, ArrayList<Filho> recebeCarona, Destino destino) {
         this.daCarona = daCarona;
         this.recebeCarona = recebeCarona;
         this.destino = destino;
+    }
+    
+    public float getAvaliacao(){
+        return this.avaliacao;
+    }
+    
+    public void addAvaliacao(float avaliacao){
+        this.avaliacao = avaliacao;
     }
 }
 
