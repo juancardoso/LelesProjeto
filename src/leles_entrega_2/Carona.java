@@ -31,5 +31,13 @@ public class Carona {
     public void addAvaliacao(float avaliacao){
         this.avaliacao = avaliacao;
     }
+    
+    public void addRecebeCarona(Filho filho){
+        this.recebeCarona.add(filho);
+    }
+    
+    public Destino getDestino(){
+        return this.destino;
+    }
 }
 

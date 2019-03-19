@@ -21,7 +21,7 @@ public class ClasseTeste {
     
     
     @Test
-    public void registroInteresseCarona(){
+    public void DeveRegistrarInteresseDeCarona(){
         Responsavel mae = new Responsavel("Janaina");
         Filho filhoDaMae = new Filho("Joaquim");
         Destino destino = new Destino("Facens","Castelinho","Jardim Simus","123","Sorocaba","SP");
@@ -36,7 +36,7 @@ public class ClasseTeste {
     }
     
     @Test
-    public void avaliandoCarona(){
+    public void temAvaliacaoDeCarona(){
         Responsavel mae = new Responsavel("Janaina");
         Filho filhoDaMae = new Filho("Joaquim");
         Destino destino = new Destino("Facens","Castelinho","Jardim Simus","123","Sorocaba","SP");
@@ -51,6 +51,25 @@ public class ClasseTeste {
         Carona carona = ControleCaronas.getCaronasFinalizadas().get(0);
         ControleCaronas.avaliarCarona(carona, (float) 10.0);
         
-        Assert.assertEquals(carona.getAvaliacao(), (float)10.0);
+        Assert.assertEquals((float)10.0, carona.getAvaliacao());
     }
+    
+    @Test
+    public void filhoTemDestinoCorreto(){
+        Responsavel maeUm = new Responsavel("Mãe");
+        Filho filhoUm = new Filho("Pedro");
+        Destino destino = new Destino("Futebol","Rua Corinthians","Itaquera","123","São Paulo","SP");
+        
+        maeUm.addFilho(filhoUm);
+        ControleCaronas.registrarInteresseCarona(destino,maeUm.getFilhos());
+        
+        Responsavel maeDois = new Responsavel("Amelia");
+        Filho filhoDois = new Filho("Joao");
+        maeDois.addFilho(filhoDois);
+
+        ControleCaronas.aceitarDarCarona(ControleCaronas.getInteresses().get(0), maeDois);  
+        
+        Assert.assertTrue(ControleCaronas.getInteresses().get(0).getDestino() == destino);
+    }
+    
 }
