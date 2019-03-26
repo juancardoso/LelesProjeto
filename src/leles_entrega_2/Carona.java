@@ -36,6 +36,10 @@ public class Carona {
         this.recebeCarona.add(filho);
     }
     
+    public ArrayList<Filho> getRecebeCarona(){
+        return this.recebeCarona;
+    }
+    
     public Destino getDestino(){
         return this.destino;
     }

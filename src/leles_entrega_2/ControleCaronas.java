@@ -58,4 +58,18 @@ public class ControleCaronas {
     public static void avaliarCarona(Carona carona, float avaliacao){
         carona.addAvaliacao(avaliacao);
     }
+    
+    public static ArrayList<Carona> getInteresseByMae(Responsavel mae){
+        ArrayList<Carona> interesses = new ArrayList<Carona>();
+        for( Carona interesse : ControleCaronas.interesses){
+            for(Filho filho : interesse.getRecebeCarona()){
+                if(filho.responsaveis.contains(mae)){
+                    interesses.add(interesse);
+                    break;
+                }
+            }
+        }
+        
+        return interesses;
+    }
 }
